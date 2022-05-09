@@ -1,34 +1,24 @@
 <template>
-  <AppSlider
-    class="slider"
-    :style="{ 'margin-left': `${marginLength}px` }"
-  >
-    <AppSliderItem v-for="(item, index) in sliderList" 
-      :key="index" 
-      :activeSlide="activeSlide" 
-      :myID="item.myID"
-      >
-      <img 
-        :src="item.download_url" 
-        :alt="item.author"
-      >
-    </AppSliderItem>
-    
+  <AppSlider  
+    :sliderList="sliderList"
+    :activeSlide="activeSlide"
+    :step="step"
+    :marginLength="marginLength"
+  />
 
-  </AppSlider>
   <button class="slider-next" @click="next"> next </button>
   <button class="slider-prev" @click="prev"> prev </button>
+
+
 </template>
 
 <script>
 import AppSlider from './components/AppSlider.vue'
-import AppSliderItem from './components/AppSliderItem.vue'
 
 export default {
   name: 'App',
   components: {
     AppSlider,
-    AppSliderItem,
   },
   data() {
     return {
@@ -42,7 +32,6 @@ export default {
     sliderLength() {
       return this.sliderList.length
     },
-
   },
   mounted() {
     this.getSliderList()
@@ -100,26 +89,5 @@ export default {
   overflow: hidden;
   height: 100vh;
 }
-.slider {
-  width: fit-content;
-  height: 450px;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  transition: margin-left 1s ease-in-out;;
 
-  &-next, &-prev {
-    position: absolute;
-    bottom:  20px;
-  }
-
-  &-next {
-    left: 10px;
-  }
-
-  &-prev {
-    left: 80px;
-  }
-
-}
 </style>
