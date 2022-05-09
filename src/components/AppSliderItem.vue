@@ -13,7 +13,7 @@ export default {
     activeSlide: {
       type: Number,
       required: true,
-      default: () => 0
+      default: () => 1
     },
     myID: {
       type: Number,
@@ -44,6 +44,10 @@ export default {
   }
   &-none {
     opacity: 0;
+    border-radius: 50%;
+    width: 190px;
+    height: 190px;
+    margin-bottom: 150px;
   }
   & img {
     height: 100%
