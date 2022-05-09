@@ -1,4 +1,10 @@
 <template>
+
+  <AppBg 
+    :bg-img="getBgImbApp"
+    :name="nameAuthor"
+  />
+
   <AppSlider  
     :sliderList="sliderList"
     :activeSlide="activeSlide"
@@ -14,11 +20,13 @@
 
 <script>
 import AppSlider from './components/AppSlider.vue'
+import AppBg from './components/AppBg.vue'
 
 export default {
   name: 'App',
   components: {
     AppSlider,
+    AppBg,
   },
   data() {
     return {
@@ -32,6 +40,13 @@ export default {
     sliderLength() {
       return this.sliderList.length
     },
+
+    getBgImbApp(){
+      return this.sliderList[this.activeSlide - 1]?.download_url
+    },
+    getNameAuthor(){
+      return this.sliderList[this.activeSlide - 1]?.author
+    }
   },
   mounted() {
     this.getSliderList()
