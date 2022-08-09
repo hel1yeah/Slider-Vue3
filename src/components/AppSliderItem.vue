@@ -8,6 +8,9 @@
 
 
 export default {
+
+
+  
   name: 'AppSliderItem',
   props: {
     activeSlide: {
@@ -33,11 +36,13 @@ export default {
   height: 380px;
   margin: 0 40px 0 0;
   overflow: hidden;
+  opacity: .75;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: 1s;
+  box-shadow: 15px 25px 36px -10px rgba(0,0,0,0.82);
   &-active {
     height: 420px;
     width: 220px;

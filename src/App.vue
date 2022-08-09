@@ -1,11 +1,13 @@
 <template>
+    <AppBg 
+      v-if="sliderLength > 0"
+      :bg-img="getBgImbApp"
+      :name="nameAuthor"
+      :status="status"
+    />
 
-  <AppBg 
-    :bg-img="getBgImbApp"
-    :name="nameAuthor"
-  />
-
-  <AppSlider  
+  <AppSlider 
+    v-if="sliderLength > 0"
     :sliderList="sliderList"
     :activeSlide="activeSlide"
     :step="step"
@@ -14,7 +16,6 @@
 
   <button class="slider-next" @click="next"> next </button>
   <button class="slider-prev" @click="prev"> prev </button>
-
 
 </template>
 
@@ -34,6 +35,7 @@ export default {
       activeSlide: 1,
       step: 230,
       marginLength: -230,
+      status: '',
     }
   },
   computed: {
@@ -50,6 +52,7 @@ export default {
   },
   mounted() {
     this.getSliderList()
+    this.setStatus()
   },
   methods: {
     getSliderList() {
@@ -73,12 +76,19 @@ export default {
       }
       this.sliderList = tets
     },
+    setStatus() {
+      this.status = 'open'
+      setTimeout(() => {
+        this.status = 'active'
+      }, 3000);
+    },
     next(){
       if (this.sliderLength  === this.activeSlide ) {
         return
       }
       this.activeSlide++
       this.marginLength = this.marginLength - this.step
+      this.setStatus()
     },
     prev(){
       if (this.activeSlide === 1) {
@@ -86,6 +96,7 @@ export default {
       }
       this.activeSlide--
       this.marginLength = this.marginLength + this.step
+      this.setStatus()
     }
   }
 
@@ -99,7 +110,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   position: relative;
-  color: #2c3e50;
+  background-color: #2c2d2e;
   margin: 0 auto;
   overflow: hidden;
   height: 100vh;
