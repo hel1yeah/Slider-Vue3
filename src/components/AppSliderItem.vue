@@ -5,7 +5,7 @@
 </template>
 
 <script>
-'test suka'
+'test suka 2222'
 
 export default {
   name: 'AppSliderItem',
