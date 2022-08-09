@@ -8,9 +8,6 @@
 
 
 export default {
-
-
-  
   name: 'AppSliderItem',
   props: {
     activeSlide: {
